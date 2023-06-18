@@ -1,3 +1,12 @@
+import { Intro } from './components/Intro'
+import { OurCoffees } from './components/OurCoffees'
+import { HomeContainer } from './styled'
+
 export const Home = () => {
-  return <div>Home</div>
+  return (
+    <HomeContainer>
+      <Intro />
+      <OurCoffees />
+    </HomeContainer>
+  )
 }
