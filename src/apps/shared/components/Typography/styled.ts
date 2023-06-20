@@ -7,7 +7,7 @@ interface TittleTextPros {
 }
 
 interface RegularTextProps {
-  color?: 'text' | 'subtitles'
+  color?: 'text' | 'subtitles' | 'label'
   size?: 'regular-large' | 'regular-medium' | 'regular-small'
   weight?: string | number
 }
