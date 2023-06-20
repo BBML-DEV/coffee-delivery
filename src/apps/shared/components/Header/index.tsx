@@ -1,12 +1,15 @@
 import { MapPin, ShoppingCart } from '@phosphor-icons/react'
 import { ButtonHeader, HeaderContainer, HeaderContainerButtons } from './styled'
 import Logo from '../../../../assets/Logo.png'
+import { NavLink } from 'react-router-dom'
 
 export const Header = () => {
   return (
     <HeaderContainer>
       <div className="container">
-        <img src={Logo} alt="Logo" />
+        <NavLink to={'/'}>
+          <img src={Logo} alt="Logo" />
+        </NavLink>
 
         <HeaderContainerButtons>
           <ButtonHeader variant="purple">
@@ -14,9 +17,11 @@ export const Header = () => {
             Porto ALegre, RS
           </ButtonHeader>
 
-          <ButtonHeader variant="yellow">
-            <ShoppingCart size={22} weight="fill" />
-          </ButtonHeader>
+          <NavLink to={'/Checkout'}>
+            <ButtonHeader variant="yellow">
+              <ShoppingCart size={22} weight="fill" />
+            </ButtonHeader>
+          </NavLink>
         </HeaderContainerButtons>
       </div>
     </HeaderContainer>

@@ -1,3 +1,11 @@
+import { CompleteOrder } from './CompleteOrder'
+import { CheckOutContainer } from './styled'
+
 export const CheckOut = () => {
-  return <div>CheckOut</div>
+  return (
+    <CheckOutContainer className="container">
+      <CompleteOrder />
+      <CompleteOrder />
+    </CheckOutContainer>
+  )
 }
