@@ -5,7 +5,8 @@ export const CheckOutContainer = styled.form`
   flex-direction: row;
   justify-content: space-between;
   gap: 2rem;
-  background-color: red;
+  width: 100%;
+
   margin-top: 2.5rem;
 `
 

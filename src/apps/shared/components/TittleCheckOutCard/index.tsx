@@ -5,24 +5,26 @@ import { RegularText } from '../Typography/styled'
 interface TittleCheckOutCardProps {
   icon: ReactNode
   tittle: string
-  description: string
+  subtitle: string
+  iconColor: 'purple' | 'yellow'
 }
 
 export const TittleCheckOutCard = ({
   icon,
   tittle,
-  description,
+  subtitle,
+  iconColor,
 }: TittleCheckOutCardProps) => {
   return (
     <TittleCardContainer>
-      <Icon>{icon}</Icon>
+      <Icon variant={iconColor}>{icon}</Icon>
 
       <div>
         <RegularText size="regular-medium" color="subtitles">
           {tittle}
         </RegularText>
         <RegularText size="regular-small" color="text">
-          {description}
+          {subtitle}
         </RegularText>
       </div>
     </TittleCardContainer>

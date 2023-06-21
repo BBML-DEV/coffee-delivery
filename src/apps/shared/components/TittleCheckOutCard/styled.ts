@@ -13,4 +13,10 @@ export const TittleCardContainer = styled.div`
   }
 `
 
-export const Icon = styled.span``
+interface IconsProps {
+  variant: 'purple' | 'yellow'
+}
+
+export const Icon = styled.span<IconsProps>`
+  color: ${({ theme, variant }) => theme.colors[variant]};
+`
