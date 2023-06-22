@@ -20,10 +20,13 @@ export const ButtonPaymentWraper = styled.button`
   svg {
     width: 16px;
     height: 16px;
-    color: ${({ theme, variant }) => theme.colors[variant]};
   }
 
   &:hover {
+    background-color: ${({ theme }) => theme.colors['base-hover']};
+  }
+
+  &:focus {
     border: 1px solid ${({ theme }) => theme.colors['purple-dark']};
     background-color: ${({ theme }) => theme.colors['purple-light']};
   }
