@@ -12,6 +12,7 @@ export const ButtonPaymentWraper = styled.button`
   transition: 0.4s;
   text-transform: uppercase;
   border: 1px solid transparent;
+  cursor: pointer;
 
   p {
     font-size: 12px;

@@ -47,6 +47,7 @@ export const BuyButton = styled.button`
   color: ${({ theme }) => theme.colors.white};
   background-color: ${({ theme }) => theme.colors.yellow};
   transition: 0.4s;
+  cursor: pointer;
 
   &:hover {
     background-color: ${({ theme }) => theme.colors['yellow-dark']};

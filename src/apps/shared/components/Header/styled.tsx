@@ -41,6 +41,10 @@ export const ButtonHeader = styled.button<buttonProps>`
   gap: 4px;
   font-size: ${({ theme }) => theme.textSizes['components-button-s']};
 
+  &:last-child {
+    cursor: pointer;
+  }
+
   ${({ variant, theme }) => css`
     background-color: ${theme.colors[`${variant}-light`]};
     color: ${theme.colors[`${variant}-dark`]};

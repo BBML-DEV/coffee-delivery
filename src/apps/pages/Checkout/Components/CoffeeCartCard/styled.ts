@@ -49,6 +49,7 @@ export const RemoveButton = styled.button`
   gap: 4px;
   background-color: ${({ theme }) => theme.colors['base-button']};
   transition: 0.4s;
+  cursor: pointer;
 
   &:hover {
     background-color: ${({ theme }) => theme.colors['base-hover']};
