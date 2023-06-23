@@ -1,28 +1,44 @@
-import { ReactNode, createContext } from 'react'
+import { ReactNode, createContext, useState } from 'react'
 import { coffees } from '../data/coffees'
+import { Coffees } from '../../pages/Home/components/CoffeeCard'
+import { produce } from 'immer'
 
-interface CoffeesData {
-  id: number
-  tags: Array<string>
-  name: string
-  description: string
-  photo: string
-  price: number
+export interface CoffeesData extends Coffees {
+  quantity: number
 }
 
-interface coffeesProps {
+interface CoffeesContextProps {
   coffees: CoffeesData[]
+  addCoffeeToCart: (coffee: CoffeesData) => void
 }
 
 interface childrenProps {
   children: ReactNode
 }
 
-export const ContextCoffee = createContext({} as coffeesProps)
+export const ContextCoffee = createContext({} as CoffeesContextProps)
 
 export const CoffeesProvider = ({ children }: childrenProps) => {
+  const [cartItem, setCartItem] = useState<CoffeesData[]>([])
+
+  function addCoffeeToCart(coffee: CoffeesData) {
+    const coffeeExistsInCart = cartItem.findIndex(
+      (coffeCart) => coffeCart.id === coffee.id,
+    )
+
+    const newCart = produce(cartItem, (draft) => {
+      if (coffeeExistsInCart < 0) {
+        draft.push(coffee)
+      } else {
+        draft[coffeeExistsInCart].quantity += coffee.quantity
+      }
+    })
+
+    setCartItem(newCart)
+  }
+
   return (
-    <ContextCoffee.Provider value={{ coffees }}>
+    <ContextCoffee.Provider value={{ addCoffeeToCart, coffees }}>
       {children}
     </ContextCoffee.Provider>
   )
