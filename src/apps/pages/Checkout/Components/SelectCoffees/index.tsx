@@ -13,8 +13,14 @@ import {
 } from './styled'
 import { priceFormat } from '../../../../shared/utils/formatted'
 
+const DELIVERY_PRICE = 3.5
+
 export const SelectCoffees = () => {
-  const { cartItems } = useCoffee()
+  const { cartItems, totalCart } = useCoffee()
+
+  const cartTotal = DELIVERY_PRICE + totalCart
+
+  console.log(typeof cartTotal)
 
   return (
     <SelectCoffeesContainer>
@@ -35,7 +41,7 @@ export const SelectCoffees = () => {
                   total de itens
                 </RegularText>
                 <RegularText size="regular-medium" color="text">
-                  {priceFormat(29.5)}
+                  {priceFormat(totalCart)}
                 </RegularText>
               </div>
               <div>
@@ -43,7 +49,7 @@ export const SelectCoffees = () => {
                   Entrega
                 </RegularText>
                 <RegularText size="regular-medium" color="text">
-                  {priceFormat(3.5)}
+                  {priceFormat(DELIVERY_PRICE)}
                 </RegularText>
               </div>
               <div>
@@ -59,7 +65,7 @@ export const SelectCoffees = () => {
                   weight={700}
                   color="subtitles"
                 >
-                  {priceFormat(29.7)}
+                  {priceFormat(cartTotal)}
                 </RegularText>
               </div>
             </Prices>
