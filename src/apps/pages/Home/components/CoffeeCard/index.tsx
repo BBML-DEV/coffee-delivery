@@ -14,29 +14,59 @@ import {
   TittleText,
 } from '../../../../shared/components/Typography/styled'
 import { QuantityInput } from '../../../../shared/components/QuantityInput'
-import { coffees } from '../OurCoffees'
 import { priceFormat } from '../../../../shared/utils/formatted'
+import { useState } from 'react'
+import { useCoffee } from '../../../../shared/hooks/useCoffee'
 
-type coffeeCardProps = {
-  coffee: coffees
+export interface Coffees {
+  id: number
+  tags: Array<string>
+  name: string
+  description: string
+  photo: string
+  price: number
 }
 
-export const CoffeeCard = ({ props }: coffeeCardProps) => {
+interface CoffeeCardProps {
+  coffee: Coffees
+}
+
+export const CoffeeCard = ({ coffee }: CoffeeCardProps) => {
+  const [quantity, setQuantity] = useState(1)
+  const { addToCart } = useCoffee()
+
+  function handleInCrease() {
+    setQuantity(quantity + 1)
+  }
+
+  function handleDeCrease() {
+    setQuantity(quantity - 1)
+  }
+
+  function handleAddToCard() {
+    const newCoffee = {
+      ...coffee,
+      quantity,
+    }
+
+    addToCart(newCoffee)
+  }
+
   return (
     <CardContainer>
-      <img src={`/coffees/${props.photo}`} alt="" />
+      <img src={`/coffees/${coffee.photo}`} alt="" />
       <TagContainer>
-        {props.tags.map((tag) => (
+        {coffee.tags.map((tag) => (
           <Tag key={tag} weight={700}>
             {tag}
           </Tag>
         ))}
       </TagContainer>
       <TitleCard size="small" color="subtitles">
-        {props.name}
+        {coffee.name}
       </TitleCard>
       <DescriptionCard size="regular-small" weight={400} color="label">
-        {props.description}
+        {coffee.description}
       </DescriptionCard>
 
       <Actions>
@@ -45,14 +75,18 @@ export const CoffeeCard = ({ props }: coffeeCardProps) => {
             RS
           </RegularText>
           <TittleText size="medium" color="title">
-            {priceFormat(props.price)}
+            {priceFormat(coffee.price)}
           </TittleText>
         </Price>
 
         <BuyButtonsContainer>
-          <QuantityInput />
+          <QuantityInput
+            inCrease={handleInCrease}
+            deCrease={handleDeCrease}
+            quantity={quantity}
+          />
 
-          <button>
+          <button onClick={handleAddToCard}>
             <ShoppingCartSimple size={28} color="#ffffff" weight="fill" />
           </button>
         </BuyButtonsContainer>

@@ -40,6 +40,7 @@ export const ButtonHeader = styled.button<buttonProps>`
   border-radius: 6px;
   gap: 4px;
   font-size: ${({ theme }) => theme.textSizes['components-button-s']};
+  position: relative;
 
   &:last-child {
     cursor: pointer;
@@ -60,4 +61,18 @@ export const ButtonHeader = styled.button<buttonProps>`
         color: ${theme.colors[`${variant}`]};
       }
     `}
+`
+
+export const IconCounter = styled.span`
+  position: absolute;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  top: -8px;
+  right: -5px;
+  width: 20px;
+  height: 20px;
+  border-radius: 60%;
+  background-color: ${({ theme }) => theme.colors['yellow-dark']};
+  color: ${({ theme }) => theme.colors.white};
 `

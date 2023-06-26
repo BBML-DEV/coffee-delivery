@@ -6,7 +6,6 @@ export const CheckOutContainer = styled.form`
   justify-content: space-between;
   gap: 2rem;
   width: 100%;
-
   margin-top: 2.5rem;
 `
 

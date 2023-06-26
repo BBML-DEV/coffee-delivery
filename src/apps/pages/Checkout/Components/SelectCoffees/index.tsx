@@ -2,6 +2,7 @@ import {
   TittleText,
   RegularText,
 } from '../../../../shared/components/Typography/styled'
+import { useCoffee } from '../../../../shared/hooks/useCoffee'
 import { CoffeeCartCard } from '../CoffeeCartCard'
 import {
   SectionSelectCoffeesCard,
@@ -10,8 +11,11 @@ import {
   Prices,
   BuyButton,
 } from './styled'
+import { priceFormat } from '../../../../shared/utils/formatted'
 
 export const SelectCoffees = () => {
+  const { cartItems } = useCoffee()
+
   return (
     <SelectCoffeesContainer>
       <TittleText size="extra-small" color="subtitles">
@@ -19,42 +23,52 @@ export const SelectCoffees = () => {
       </TittleText>
 
       <SectionSelectCoffeesCard>
-        <CoffeeCartCard />
+        {cartItems.map((item) => (
+          <CoffeeCartCard key={item.id} coffee={item} />
+        ))}
 
-        <CoffeeCartCard />
+        {cartItems.length > 0 ? (
+          <SectionPriceCart>
+            <Prices>
+              <div>
+                <RegularText size="regular-small" color="text">
+                  total de itens
+                </RegularText>
+                <RegularText size="regular-medium" color="text">
+                  {priceFormat(29.5)}
+                </RegularText>
+              </div>
+              <div>
+                <RegularText size="regular-small" color="text">
+                  Entrega
+                </RegularText>
+                <RegularText size="regular-medium" color="text">
+                  {priceFormat(3.5)}
+                </RegularText>
+              </div>
+              <div>
+                <RegularText
+                  size="regular-large"
+                  weight={700}
+                  color="subtitles"
+                >
+                  Total a pagar
+                </RegularText>
+                <RegularText
+                  size="regular-large"
+                  weight={700}
+                  color="subtitles"
+                >
+                  {priceFormat(29.7)}
+                </RegularText>
+              </div>
+            </Prices>
 
-        <CoffeeCartCard />
-
-        <SectionPriceCart>
-          <Prices>
-            <div>
-              <RegularText size="regular-small" color="text">
-                total de itens
-              </RegularText>
-              <RegularText size="regular-medium" color="text">
-                RS29,70
-              </RegularText>
-            </div>
-            <div>
-              <RegularText size="regular-small" color="text">
-                total de itens
-              </RegularText>
-              <RegularText size="regular-medium" color="text">
-                RS29,70
-              </RegularText>
-            </div>
-            <div>
-              <RegularText size="regular-large" weight={700} color="subtitles">
-                total de itens
-              </RegularText>
-              <RegularText size="regular-large" weight={700} color="subtitles">
-                RS29,70
-              </RegularText>
-            </div>
-          </Prices>
-
-          <BuyButton>CONFIRMAR PEDIDO</BuyButton>
-        </SectionPriceCart>
+            <BuyButton>CONFIRMAR PEDIDO</BuyButton>
+          </SectionPriceCart>
+        ) : (
+          <h1>O Carrinho está vazio</h1>
+        )}
       </SectionSelectCoffeesCard>
     </SelectCoffeesContainer>
   )
