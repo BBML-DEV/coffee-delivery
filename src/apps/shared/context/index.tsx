@@ -1,4 +1,4 @@
-import { ReactNode, createContext, useState } from 'react'
+import { ReactNode, createContext, useEffect, useState } from 'react'
 import { Coffees } from '../../pages/Home/components/CoffeeCard'
 import { produce } from 'immer'
 
@@ -22,10 +22,19 @@ interface childrenProps {
   children: ReactNode
 }
 
+const COFFEE_STORAGE_CART_ITEMS = 'coffeeStorageItemKey'
+
 export const ContextCoffee = createContext({} as coffeesProps)
 
 export const CoffeesProvider = ({ children }: childrenProps) => {
-  const [cartItems, setCartItems] = useState<CoffeesData[]>([])
+  const [cartItems, setCartItems] = useState<CoffeesData[]>(() => {
+    const storageCartItem = localStorage.getItem(COFFEE_STORAGE_CART_ITEMS)
+    if (storageCartItem) {
+      return JSON.parse(storageCartItem)
+    } else {
+      return []
+    }
+  })
   const cartItemQuantity = cartItems.length
   const totalCart = cartItems.reduce((total, cartItem) => {
     return total + cartItem.quantity * cartItem.price
@@ -45,7 +54,6 @@ export const CoffeesProvider = ({ children }: childrenProps) => {
     })
 
     setCartItems(newCart)
-    console.log(coffeeAlreadyExistsInCart)
   }
 
   function changeQuantityCoffeeInCart(
@@ -80,6 +88,10 @@ export const CoffeesProvider = ({ children }: childrenProps) => {
 
     setCartItems(newCart)
   }
+
+  useEffect(() => {
+    localStorage.setItem(COFFEE_STORAGE_CART_ITEMS, JSON.stringify(cartItems))
+  }, [cartItems])
 
   return (
     <ContextCoffee.Provider
