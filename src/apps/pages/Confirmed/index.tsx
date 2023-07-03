@@ -20,8 +20,6 @@ export const Confirmed = () => {
 
   const { state } = useLocation() as unknown as LocationType
 
-  console.log(state.cep)
-
   return (
     <ConfirmedContainer className="container">
       <OrderContainer variant="yellow-dark">
