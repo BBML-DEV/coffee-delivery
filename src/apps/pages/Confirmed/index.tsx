@@ -4,12 +4,13 @@ import {
   RegularText,
   TittleText,
 } from '../../shared/components/Typography/styled'
-import { InfoWithIcon } from '../../shared/components/InfoWithIcon'
+
 import { CurrencyDollar, MapPin, Timer } from '@phosphor-icons/react'
 import { useTheme } from 'styled-components'
 import { useLocation } from 'react-router-dom'
 import { orderData } from '../Checkout'
 import { paymentMethods } from '../Checkout/Components/PaymentMethods'
+import { InfoWithIcon } from '../../shared/components/InfoWithIcon'
 
 interface LocationType {
   state: orderData

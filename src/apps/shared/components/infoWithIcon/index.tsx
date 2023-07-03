@@ -1,7 +1,7 @@
 import { ReactNode } from 'react'
 import { IconContainer, InfoContainer } from './styled'
 
-interface infoProps {
+export interface infoProps {
   icon: ReactNode
   text: string | ReactNode
   iconBg: string
