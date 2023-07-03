@@ -8,7 +8,7 @@ export const InfoContainer = styled.div`
 `
 
 interface iconProps {
-  iconBg: 'purple' | 'purple-dark' | 'yellow' | 'yellow-dark'
+  iconBg: string
 }
 
 export const IconContainer = styled.div<iconProps>`
