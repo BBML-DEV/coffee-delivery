@@ -2,14 +2,14 @@ import { RegularText } from '../../../../../shared/components/Typography/styled'
 import { PaymentMethodContainer, ContentPaymentContainer } from './styled'
 import { InputHTMLAttributes, ReactNode, forwardRef } from 'react'
 
-type PaymentMethodType = InputHTMLAttributes<HTMLInputElement> & {
+type PaymentMethodTypeProps = InputHTMLAttributes<HTMLInputElement> & {
   icon: ReactNode
   label: string
 }
 
 export const PaymentMethodInput = forwardRef<
   HTMLInputElement,
-  PaymentMethodType
+  PaymentMethodTypeProps
 >(({ id, icon, label, ...props }, ref) => {
   return (
     <PaymentMethodContainer>

@@ -7,9 +7,20 @@ import {
 import { InfoWithIcon } from '../../shared/components/InfoWithIcon'
 import { CurrencyDollar, MapPin, Timer } from '@phosphor-icons/react'
 import { useTheme } from 'styled-components'
+import { useLocation } from 'react-router-dom'
+import { orderData } from '../Checkout'
+import { paymentMethods } from '../Checkout/Components/PaymentMethods'
+
+interface LocationType {
+  state: orderData
+}
 
 export const Confirmed = () => {
   const { colors } = useTheme()
+
+  const { state } = useLocation() as unknown as LocationType
+
+  console.log(state.cep)
 
   return (
     <ConfirmedContainer className="container">
@@ -25,9 +36,9 @@ export const Confirmed = () => {
             iconBg={colors.purple}
             text={
               <RegularText size="regular-medium" color="text">
-                Entrega em <strong>Rua João Daniel Martinelli, 102</strong>
+                Entrega em <strong>{state.street}</strong>, {state.streetNumber}
                 <br />
-                Farrapos - Porto Alegre, RS
+                {state.district} - {state.city}, {state.uf}
               </RegularText>
             }
           />
@@ -51,7 +62,7 @@ export const Confirmed = () => {
               <RegularText size="regular-medium" color="text">
                 Pagamento na entrega
                 <br />
-                <strong>Cartão de Crédito</strong>
+                <strong>{paymentMethods[state.paymentMethod].label}</strong>
               </RegularText>
             }
           />

@@ -1,10 +1,10 @@
 import { Bank, CreditCard, Money } from '@phosphor-icons/react'
 import { PaymentMethodInput } from './PaymentMethodInput'
 import { PaymentMethodContainer } from './styled'
-import { useForm, useFormContext } from 'react-hook-form'
+import { useFormContext } from 'react-hook-form'
 import { RegularText } from '../../../../shared/components/Typography/styled'
 
-const PaymentMethodData = {
+export const paymentMethods = {
   credit: {
     icon: <CreditCard />,
     label: 'Cartão de crédito',
@@ -29,7 +29,7 @@ export const PaymentMethod = () => {
 
   return (
     <PaymentMethodContainer>
-      {Object.entries(PaymentMethodData).map(([key, { label, icon }]) => (
+      {Object.entries(paymentMethods).map(([key, { label, icon }]) => (
         <PaymentMethodInput
           id={key}
           value={key}
