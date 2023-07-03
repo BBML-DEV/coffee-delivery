@@ -24,3 +24,15 @@ export const InputStyled = styled.input`
 
   color: ${({ theme }) => theme.colors['base-label']};
 `
+export const InputStyledContainer = styled.div`
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  border: 1px solid ${({ theme }) => theme.colors['base-button']};
+  background-color: ${({ theme }) => theme.colors['base-input']};
+`
+export const RightText = styled.p`
+  padding: 0.5rem;
+  color: ${({ theme }) => theme.colors[`base-label`]};
+  font-size: ${({ theme }) => theme.textSizes['text-regular-small']};
+`
