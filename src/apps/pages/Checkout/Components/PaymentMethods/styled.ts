@@ -1,9 +1,12 @@
 import styled from 'styled-components'
 
 export const PaymentMethodContainer = styled.div`
-  display: flex;
-  flex-direction: row;
-  justify-content: space-between;
-  align-items: center;
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
   gap: 0.75rem;
+
+  > p {
+    grid-column: span 3;
+    color: ${({ theme }) => theme.colors['base-error']};
+  }
 `
