@@ -10,7 +10,7 @@ import { useTheme } from 'styled-components'
 import { useLocation } from 'react-router-dom'
 import { orderData } from '../Checkout'
 import { paymentMethods } from '../Checkout/Components/PaymentMethods'
-import { InfoWithIcon } from '../../shared/components/InfoWithIcon'
+import { InfoWithIcon } from '../../shared/components/infoWithIcon'
 
 interface LocationType {
   state: orderData

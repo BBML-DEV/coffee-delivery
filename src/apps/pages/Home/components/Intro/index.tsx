@@ -6,9 +6,9 @@ import {
   IntroTittle,
 } from './styled'
 import introBanner from '../../../../../assets/introBanner.png'
-import { InfoWithIcon } from '../../../../shared/components/InfoWithIcon'
 import { useTheme } from 'styled-components'
 import { ShoppingCart } from '@phosphor-icons/react'
+import { InfoWithIcon } from '../../../../shared/components/infoWithIcon'
 
 export const Intro = () => {
   const { colors } = useTheme()
