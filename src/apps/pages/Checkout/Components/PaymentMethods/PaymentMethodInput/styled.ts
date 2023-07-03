@@ -1,6 +1,23 @@
-import styled from 'styled-components'
+import styled, { css } from 'styled-components'
 
-export const ButtonPaymentWraper = styled.button`
+export const PaymentMethodContainer = styled.div`
+  input {
+    visibility: hidden;
+    appearance: none;
+  }
+
+  input:checked + label div {
+    ${({ theme }) => css`
+      background: ${theme.colors['purple-light']};
+      border-color: ${theme.colors.purple};
+
+      &:hover {
+        background: ${theme.colors['purple-light']};
+      }
+    `}
+  }
+`
+export const ContentPaymentContainer = styled.div`
   width: 100%;
   display: flex;
   flex-direction: row;
@@ -21,14 +38,10 @@ export const ButtonPaymentWraper = styled.button`
   svg {
     width: 16px;
     height: 16px;
+    color: ${({ theme }) => theme.colors.purple};
   }
 
   &:hover {
-    background-color: ${({ theme }) => theme.colors['base-hover']};
-  }
-
-  &:focus {
-    border: 1px solid ${({ theme }) => theme.colors['purple-dark']};
-    background-color: ${({ theme }) => theme.colors['purple-light']};
+    background: ${({ theme }) => theme.colors['base-hover']};
   }
 `

@@ -1,6 +1,7 @@
 import { Bank, CreditCard, Money } from '@phosphor-icons/react'
 import { PaymentMethodInput } from './PaymentMethodInput'
 import { PaymentMethodContainer } from './styled'
+import { useForm, useFormContext } from 'react-hook-form'
 
 const PaymentMethodData = {
   credit: {
@@ -18,10 +19,19 @@ const PaymentMethodData = {
 }
 
 export const PaymentMethod = () => {
+  const { register } = useFormContext()
+
   return (
     <PaymentMethodContainer>
       {Object.entries(PaymentMethodData).map(([key, { label, icon }]) => (
-        <PaymentMethodInput key={key} icon={icon} label={label} />
+        <PaymentMethodInput
+          id={key}
+          value={key}
+          key={key}
+          icon={icon}
+          label={label}
+          {...register('paymentMethod')}
+        />
       ))}
     </PaymentMethodContainer>
   )

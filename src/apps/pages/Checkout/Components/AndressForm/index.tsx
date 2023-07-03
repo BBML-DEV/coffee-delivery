@@ -43,6 +43,7 @@ export const AndressForm = () => {
         placeholder="Complemento"
         {...register('complement')}
         error={errors.complement?.message}
+        rightTextInput="Opcional"
       />
       <Input
         type="text"

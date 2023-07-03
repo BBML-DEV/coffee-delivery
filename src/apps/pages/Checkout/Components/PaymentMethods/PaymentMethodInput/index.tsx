@@ -1,22 +1,27 @@
 import { RegularText } from '../../../../../shared/components/Typography/styled'
-import { ButtonPaymentWraper } from './styled'
-import { InputHTMLAttributes, ReactNode } from 'react'
+import { PaymentMethodContainer, ContentPaymentContainer } from './styled'
+import { InputHTMLAttributes, ReactNode, forwardRef } from 'react'
 
 type PaymentMethodType = InputHTMLAttributes<HTMLInputElement> & {
   icon: ReactNode
   label: string
 }
 
-export const PaymentMethodInput = ({
-  id,
-  icon,
-  label,
-  ...props
-}: PaymentMethodType) => {
+export const PaymentMethodInput = forwardRef<
+  HTMLInputElement,
+  PaymentMethodType
+>(({ id, icon, label, ...props }, ref) => {
   return (
-    <ButtonPaymentWraper>
-      {icon}
-      <RegularText color="text">{label}</RegularText>
-    </ButtonPaymentWraper>
+    <PaymentMethodContainer>
+      <input id={id} type="radio" {...props} name="paymentMethod" ref={ref} />
+      <label htmlFor={id}>
+        <ContentPaymentContainer>
+          {icon}
+          <RegularText size="regular-small" color="label">
+            {label}
+          </RegularText>
+        </ContentPaymentContainer>
+      </label>
+    </PaymentMethodContainer>
   )
-}
+})
