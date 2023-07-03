@@ -1,27 +1,28 @@
-import { CreditCard } from '@phosphor-icons/react'
-import { ButtonPayment } from './ButtonPayment'
+import { Bank, CreditCard, Money } from '@phosphor-icons/react'
+import { PaymentMethodInput } from './PaymentMethodInput'
 import { PaymentMethodContainer } from './styled'
-import { useTheme } from 'styled-components'
+
+const PaymentMethodData = {
+  credit: {
+    icon: <CreditCard />,
+    label: 'Cartão de crédito',
+  },
+  debit: {
+    icon: <Bank />,
+    label: 'Cartão de débito',
+  },
+  money: {
+    icon: <Money />,
+    label: 'Dinheiro',
+  },
+}
 
 export const PaymentMethod = () => {
-  const { colors } = useTheme()
-
   return (
     <PaymentMethodContainer>
-      <ButtonPayment
-        icon={<CreditCard color={colors.purple} />}
-        text="Cartão de crédito"
-      />
-
-      <ButtonPayment
-        icon={<CreditCard color={colors.purple} />}
-        text="Cartão de crédito"
-      />
-
-      <ButtonPayment
-        icon={<CreditCard color={colors.purple} />}
-        text="Cartão de crédito"
-      />
+      {Object.entries(PaymentMethodData).map(([key, { label, icon }]) => (
+        <PaymentMethodInput key={key} icon={icon} label={label} />
+      ))}
     </PaymentMethodContainer>
   )
 }
