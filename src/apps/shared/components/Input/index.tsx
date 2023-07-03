@@ -1,7 +1,18 @@
-import { InputStyled } from './styled'
+import { forwardRef, InputHTMLAttributes } from 'react'
+import { InputStyled, InputWrapper } from './styled'
+import { RegularText } from '../Typography/styled'
 
-type inputProps = inputHTMLAttributes<HTMLInputElement>
-
-export const Input = ({ ...props }: inputProps) => {
-  return <InputStyled {...props} />
+type InputProps = InputHTMLAttributes<HTMLInputElement> & {
+  error?: string
 }
+
+export const Input = forwardRef<HTMLInputElement, InputProps>(
+  ({ error, className, ...props }, ref) => {
+    return (
+      <InputWrapper className={className}>
+        <InputStyled {...props} ref={ref} />
+        {error && <RegularText size="regular-small">{error}</RegularText>}
+      </InputWrapper>
+    )
+  },
+)

@@ -20,8 +20,6 @@ export const SelectCoffees = () => {
 
   const cartTotal = DELIVERY_PRICE + totalCart
 
-  console.log(typeof cartTotal)
-
   return (
     <SelectCoffeesContainer>
       <TittleText size="extra-small" color="subtitles">
@@ -70,7 +68,7 @@ export const SelectCoffees = () => {
               </div>
             </Prices>
 
-            <BuyButton>CONFIRMAR PEDIDO</BuyButton>
+            <BuyButton type="submit">CONFIRMAR PEDIDO</BuyButton>
           </SectionPriceCart>
         ) : (
           <h1>O Carrinho está vazio</h1>
